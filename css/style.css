@@ -1,0 +1,502 @@
+/* ── 1. CSS Custom Properties (Design Tokens) ── */
+:root {
+  /* Palette */
+  --bg-base: #080c10; /* deepest background */
+  --bg-surface: #0d1117; /* card/section base */
+  --bg-elevated: #161b22; /* elevated cards */
+  --bg-glass: rgba(22, 27, 34, 0.6);
+
+  --accent: #00d4aa; /* teal – primary accent */
+  --accent-dim: rgba(0, 212, 170, 0.12);
+  --accent-glow: rgba(0, 212, 170, 0.35);
+  --accent-2: #7c5cfc; /* violet – secondary accent */
+  --accent-2-dim: rgba(124, 92, 252, 0.12);
+  --icon-green: #00d4aa; /* bright green for icons */
+
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted: #484f58;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-accent: rgba(0, 212, 170, 0.25);
+
+  /* Typography */
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "Space Mono", monospace;
+  --font-body: "Inter", sans-serif;
+
+  /* Spacing scale */
+  --sp-xs: 0.5rem;
+  --sp-sm: 1rem;
+  --sp-md: 1.5rem;
+  --sp-lg: 2.5rem;
+  --sp-xl: 4rem;
+  --sp-2xl: 6rem;
+
+  /* Layout */
+  --max-width: 1200px;
+  --nav-h: 72px;
+
+  /* Transitions */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 180ms;
+  --dur-med: 320ms;
+  --dur-slow: 500ms;
+
+  /* Radius */
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --nav-scrolled-bg: rgba(8, 12, 16, 0.88);
+  --overlay-surface: rgba(8, 12, 16, 0.75);
+  --nav-menu-bg: rgba(8, 12, 16, 0.97);
+}
+
+html[data-theme="light"] {
+  --bg-base: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f4f7fb;
+  --bg-glass: rgba(255, 255, 255, 0.72);
+
+  --accent-dim: rgba(0, 212, 170, 0.14);
+  --accent-glow: rgba(0, 212, 170, 0.18);
+  --accent-2-dim: rgba(124, 92, 252, 0.08);
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #6b7280;
+  --border: rgba(15, 23, 42, 0.08);
+  --border-accent: rgba(0, 212, 170, 0.22);
+  --nav-scrolled-bg: rgba(255, 255, 255, 0.92);
+  --nav-menu-bg: rgba(255, 255, 255, 0.98);
+  --overlay-surface: rgba(255, 255, 255, 0.92);
+}
+
+/* ── 2. Reset & Base ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.65;
+  overflow-x: hidden;
+  transition:
+    background-color var(--dur-med) var(--ease),
+    color var(--dur-med) var(--ease);
+}
+
+button,
+input,
+textarea,
+select,
+.section,
+.project-card,
+.skill-category,
+.contact-form,
+.form-control,
+.project-overlay,
+.nav-link,
+.theme-toggle,
+.site-footer,
+.sidebar-card,
+.edu-card,
+.contact-item {
+  transition:
+    background-color var(--dur-med) var(--ease),
+    color var(--dur-med) var(--ease),
+    border-color var(--dur-med) var(--ease),
+    box-shadow var(--dur-med) var(--ease);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ul,
+ol {
+  list-style: none;
+}
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+}
+
+/* ── 3. Utility Classes ── */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--sp-md);
+}
+
+.section {
+  padding: var(--sp-2xl) 0;
+  position: relative;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: var(--sp-xs);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-md);
+}
+
+.section-title .accent {
+  color: var(--accent);
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 56ch;
+  line-height: 1.7;
+  margin-bottom: var(--sp-lg);
+}
+
+.accent {
+  color: var(--accent);
+}
+
+/* Icon styling with green color */
+.highlight-icon i,
+.skill-cat-icon i,
+.project-img-placeholder i,
+.screenshot-placeholder i {
+  color: var(--icon-green);
+  font-size: 1em;
+}
+
+/* Divider line */
+.section-divider {
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 2px;
+  margin: var(--sp-sm) 0 var(--sp-lg);
+}
+
+/* Pill / tag badges */
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid var(--border-accent);
+  white-space: nowrap;
+}
+
+.tag.violet {
+  background: var(--accent-2-dim);
+  color: #b09aff;
+  border-color: rgba(124, 92, 252, 0.3);
+}
+
+/* ── 4. Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--r-sm);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all var(--dur-med) var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg-base);
+}
+.btn-primary:hover {
+  background: #00f0c0;
+  box-shadow: 0 0 20px var(--accent-glow);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ── 5. NAVBAR ── */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--nav-h);
+  transition:
+    background var(--dur-med) var(--ease),
+    box-shadow var(--dur-med) var(--ease);
+}
+
+/* When scrolled JS adds .scrolled */
+#navbar.scrolled {
+  background: var(--nav-scrolled-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 var(--border);
+}
+
+.nav-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--sp-md);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+.nav-logo .logo-bracket {
+  color: var(--accent);
+}
+.nav-logo:hover .logo-bracket {
+  text-shadow: 0 0 12px var(--accent-glow);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+}
+
+.theme-toggle-item {
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  transition:
+    transform var(--dur-fast) var(--ease),
+    background-color var(--dur-med) var(--ease),
+    color var(--dur-med) var(--ease),
+    border-color var(--dur-med) var(--ease),
+    box-shadow var(--dur-med) var(--ease);
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.theme-toggle i {
+  font-size: 1rem;
+}
+
+.nav-link {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 4px 0;
+  position: relative;
+  transition: color var(--dur-fast);
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+  transition: width var(--dur-med) var(--ease);
+}
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text-primary);
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+}
+.ham-line {
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 1px;
+  transition: all var(--dur-med) var(--ease);
+  display: block;
+}
+.hamburger.open .ham-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open .ham-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.open .ham-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── 6. HERO SECTION ── */
+/* Section styles moved to individual files: hero.css, about.css, skills.css,
+   projects.css, case-study.css, education.css, contact.css */
+
+/* ── 13. FOOTER ── */
+.site-footer {
+  text-align: center;
+  padding: var(--sp-lg) var(--sp-md);
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+.site-footer .accent {
+  color: var(--accent);
+}
+.footer-sub {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ── 14. SCROLL TO TOP ── */
+.scroll-top {
+  position: fixed;
+  bottom: var(--sp-md);
+  right: var(--sp-md);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--bg-base);
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px var(--accent-glow);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition:
+    opacity var(--dur-med),
+    transform var(--dur-med) var(--ease);
+  z-index: 900;
+}
+.scroll-top.visible {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+.scroll-top:hover {
+  background: #00f0c0;
+  transform: translateY(-2px);
+}
+
+/* ── 15. Reveal animations ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--dur-slow) var(--ease),
+    transform var(--dur-slow) var(--ease);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delay utilities */
+.delay-1 {
+  transition-delay: 80ms;
+}
+.delay-2 {
+  transition-delay: 160ms;
+}
+.delay-3 {
+  transition-delay: 240ms;
+}
+.delay-4 {
+  transition-delay: 320ms;
+}
+.delay-5 {
+  transition-delay: 400ms;
+}
+
+/* ── 16. Loading skeleton ── */
+.section-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+/* ── 17. Focus & Accessibility ── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}

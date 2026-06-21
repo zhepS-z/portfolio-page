@@ -1,0 +1,264 @@
+/* ============================================================
+   RESPONSIVE.CSS — Breakpoint overrides
+   Breakpoints: tablet ≤ 1024px, mobile ≤ 768px, small ≤ 480px
+   ============================================================ */
+
+/* ── Tablet (≤ 1024px) ── */
+@media (max-width: 1024px) {
+
+  /* About grid → single column */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-lg);
+  }
+
+  /* Case study layout → single column */
+  .case-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .case-sidebar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--sp-sm);
+  }
+
+  .case-sidebar>*+* {
+    margin-top: 0;
+  }
+
+  /* Contact layout → single column */
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: var(--sp-lg);
+  }
+
+  /* Architecture diagram → 2 columns */
+  .arch-diagram {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Mobile (≤ 768px) ── */
+@media (max-width: 768px) {
+
+  /* Section padding reduction */
+  .section {
+    padding: var(--sp-xl) 0;
+  }
+
+  /* ── Navbar mobile ── */
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    background: var(--nav-menu-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    flex-direction: column;
+    gap: 0;
+    padding: var(--sp-sm) 0;
+    border-bottom: 1px solid var(--border);
+    transform: translateY(-110%);
+    opacity: 0;
+    transition: transform var(--dur-med) var(--ease),
+      opacity var(--dur-med) var(--ease);
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 14px var(--sp-md);
+    font-size: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-link:last-child {
+    border-bottom: none;
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+
+  /* hide underline animation on mobile */
+
+  /* ── Hero ── */
+  .hero-name {
+    letter-spacing: -0.01em;
+  }
+
+  .hero-bio {
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    gap: 10px;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+
+  /* ── About stats ── */
+  .about-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .stat-number {
+    font-size: 1.4rem;
+  }
+
+  /* ── Skills ── */
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* ── Projects ── */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Case study ── */
+  .case-hero-banner {
+    padding: var(--sp-md);
+  }
+
+  .arch-diagram {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .screenshots-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Education ── */
+  .edu-timeline {
+    padding-left: 24px;
+  }
+
+  /* ── Contact ── */
+  .contact-info {
+    margin-bottom: var(--sp-md);
+  }
+}
+
+/* ── Small mobile (≤ 480px) ── */
+@media (max-width: 480px) {
+  :root {
+    --sp-md: 1.25rem;
+    --sp-lg: 2rem;
+    --sp-xl: 3rem;
+    --sp-2xl: 4.5rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .arch-diagram {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .case-sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .project-links {
+    flex-wrap: wrap;
+  }
+}
+
+/* ── Large screens (> 1400px) ── */
+@media (max-width: 900px) {
+  .lightbox-content {
+    max-width: min(90vw, 760px);
+  }
+}
+
+@media (max-width: 720px) {
+  .lightbox-overlay {
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+  }
+
+  .lightbox-content {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100vh - 2rem);
+    margin: 0;
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.5);
+  }
+
+  .lightbox-close,
+  .lightbox-prev,
+  .lightbox-next {
+    top: auto;
+    bottom: 0.75rem;
+    transform: none;
+  }
+
+  .lightbox-prev {
+    left: 0.75rem;
+  }
+
+  .lightbox-next {
+    right: 0.75rem;
+  }
+
+  .lightbox-close {
+    right: 0.75rem;
+  }
+
+  .lightbox-prev,
+  .lightbox-next,
+  .lightbox-close {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Large screens (> 1400px) ── */
+@media (min-width: 1400px) {
+  :root {
+    --max-width: 1320px;
+  }
+}

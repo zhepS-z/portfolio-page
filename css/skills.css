@@ -1,0 +1,93 @@
+/* SKILLS SECTION moved from style.css */
+/* ── 8. SKILLS SECTION ── */
+#skills {
+    background: var(--bg-base);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--sp-md);
+}
+
+.skill-category {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: var(--sp-md) var(--sp-lg);
+    transition: border-color var(--dur-med), transform var(--dur-med) var(--ease);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    opacity: 0;
+    transition: opacity var(--dur-med);
+}
+
+.skill-category:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-4px);
+}
+
+.skill-category:hover::before {
+    opacity: 1;
+}
+
+.skill-cat-icon {
+    font-size: 1.6rem;
+    margin-bottom: var(--sp-xs);
+}
+
+.skill-cat-title {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--sp-sm);
+}
+
+.skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--bg-glass);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    backdrop-filter: blur(8px);
+    transition: all var(--dur-fast);
+}
+
+.skill-badge:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-dim);
+}
+
+.skill-badge .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+}

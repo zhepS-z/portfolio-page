@@ -1,0 +1,82 @@
+/* EDUCATION SECTION moved from style.css */
+/* ── 11. EDUCATION SECTION ── */
+#education {
+    background: var(--bg-surface);
+}
+
+.edu-timeline {
+    position: relative;
+    padding-left: 32px;
+}
+
+.edu-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent) 0%, var(--accent-2) 100%);
+    border-radius: 1px;
+}
+
+.edu-item {
+    position: relative;
+    margin-bottom: var(--sp-lg);
+}
+
+.edu-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Timeline dot */
+.edu-item::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px var(--bg-base), 0 0 0 5px var(--border-accent);
+}
+
+.edu-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: var(--sp-md) var(--sp-lg);
+    transition: border-color var(--dur-med), transform var(--dur-med) var(--ease);
+}
+
+.edu-card:hover {
+    border-color: var(--border-accent);
+    transform: translateX(6px);
+}
+
+.edu-date {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.edu-degree {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.edu-school {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--sp-sm);
+}
+
+.edu-detail {
+    font-size: 0.82rem;
+}

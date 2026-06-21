@@ -1,0 +1,177 @@
+/* PROJECTS SECTION moved from style.css */
+/* ── 9. PROJECTS SECTION ── */
+#projects {
+    background: var(--bg-surface);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--sp-md);
+}
+
+.project-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--dur-med) var(--ease), border-color var(--dur-med), box-shadow var(--dur-med) var(--ease);
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-accent);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.project-img-wrap {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: var(--bg-glass);
+}
+
+.project-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--dur-slow) var(--ease);
+}
+
+.project-card:hover .project-img-wrap img {
+    transform: scale(1.04);
+}
+
+/* Placeholder gradient if no screenshot */
+.project-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+}
+
+.project-img-placeholder.grad-1 {
+    background: linear-gradient(135deg, #0d1117 0%, #1a1f2e 50%, #0d2818 100%);
+}
+
+.project-img-placeholder.grad-2 {
+    background: linear-gradient(135deg, #0d1117 0%, #1a0d2e 50%, #0d1a2e 100%);
+}
+
+.project-img-placeholder.grad-3 {
+    background: linear-gradient(135deg, #0d1117 0%, #2e1a0d 50%, #2e0d0d 100%);
+}
+
+.project-img-placeholder.grad-4 {
+    background: linear-gradient(135deg, #0d1117 0%, #0d2e2e 50%, #0d1a2e 100%);
+}
+
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--overlay-surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-sm);
+    opacity: 0;
+    transition: opacity var(--dur-med);
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.overlay-btn {
+    padding: 8px 18px;
+    border-radius: var(--r-sm);
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: var(--accent);
+    color: var(--bg-base);
+    transition: transform var(--dur-fast);
+}
+
+.overlay-btn:hover {
+    transform: scale(1.05);
+}
+
+.overlay-btn.outline {
+    background: transparent;
+    border: 1px solid var(--text-primary);
+    color: var(--text-primary);
+}
+
+/* Featured badge */
+.project-featured-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--accent);
+    color: var(--bg-base);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.project-body {
+    padding: var(--sp-md);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.project-desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    flex: 1;
+    margin-bottom: var(--sp-sm);
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: var(--sp-sm);
+}
+
+.project-links {
+    display: flex;
+    gap: var(--sp-xs);
+}
+
+.proj-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    transition: all var(--dur-fast);
+}
+
+.proj-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-dim);
+}

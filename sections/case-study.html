@@ -1,0 +1,425 @@
+<!-- ============================================================
+     CASE STUDY SECTION — Valorant Esports Platform
+     ============================================================ -->
+<section id="case-study" class="section" aria-labelledby="case-study-heading">
+  <div class="container">
+    <!-- Header banner -->
+    <div class="case-hero-banner reveal">
+      <div class="case-meta">
+        <span class="tag violet">Case Study</span>
+        <span class="tag">Full-Stack</span>
+        <span class="tag">2025 — 2026</span>
+      </div>
+
+      <h2 class="case-title" id="case-study-heading">
+        Valorant Esports <span class="accent">Platform</span>
+      </h2>
+
+      <p class="case-tagline">
+        A full-stack web application for managing Valorant esports scrim, team
+        rosters, player statistics, and live match results — built from scratch
+        as a personal capstone project.
+      </p>
+    </div>
+
+    <!-- Two-column layout: main content + sidebar -->
+    <div class="case-layout">
+      <!-- ── MAIN CONTENT ── -->
+      <div class="case-main">
+        <!-- Problem Statement -->
+        <div class="case-block reveal">
+          <h3 class="case-block-title">Problem Statement</h3>
+          <p>
+            Esports teams often struggle to find balanced scrim opponents,
+            manage training schedules, track player performance, and organize
+            team strategies efficiently. The lack of an integrated platform
+            leads to fragmented information, communication issues, and less
+            effective team development.
+          </p>
+          <p style="margin-top: 0.75rem">
+            This project set out to develop a platform tailored to the unique
+            needs of esports teams, bringing scrim matchmaking, performance
+            tracking, strategy management, and team communication into a single,
+            integrated experience.
+          </p>
+        </div>
+
+        <!-- Objectives -->
+        <div class="case-block reveal">
+          <h3 class="case-block-title">Objectives</h3>
+          <ul>
+            <li>
+              Design and implement a relational database schema that models
+              teams, players, matches, and per-map statistics.
+            </li>
+            <li>
+              Build a RESTful API layer with proper authentication, input
+              validation, and error handling.
+            </li>
+            <li>
+              Create a front end that presents live and historical match data in
+              a readable, professional format.
+            </li>
+            <li>
+              Implement WebSocket-based live chat functionality for real-time
+              communication.
+            </li>
+            <li>
+              Achieve full CRUD operations on all major entities through an
+              admin dashboard.
+            </li>
+          </ul>
+        </div>
+
+        <!-- System Architecture -->
+        <div class="case-block reveal">
+          <h3 class="case-block-title">System Architecture</h3>
+          <p style="margin-bottom: var(--sp-sm)">
+            The platform is built using a combination of PHP and MySQL for core
+            application logic and data management, while Node.js and Socket.IO
+            are used to support real-time chat functionality. Integration with
+            the Riot Games API enables the system to access and display
+            up-to-date Valorant player statistics, providing teams with valuable
+            performance insights.
+          </p>
+
+          <div class="arch-diagram">
+            <!-- Presentation tier -->
+            <div class="arch-node highlight">HTML</div>
+            <div class="arch-node highlight">CSS / Bootstrap</div>
+            <div class="arch-node highlight">JavaScript</div>
+
+            <div class="arch-connector">↕ HTTP Requests / AJAX (JSON)</div>
+
+            <!-- Application Tier -->
+            <div class="arch-node">PHP Backend</div>
+            <div class="arch-node">Auth Middleware</div>
+            <div class="arch-node">Scrim Matchmaking Module</div>
+
+            <div class="arch-connector">
+              ↕ REST API Calls & Real-Time Events
+            </div>
+
+            <!-- Real-Time & Integration tier -->
+            <div class="arch-node">Node.js</div>
+            <div class="arch-node">Socket.IO</div>
+            <div class="arch-node">Riot Games API</div>
+
+            <div class="arch-connector">↕ SQL Queries & Data Storage</div>
+
+            <!-- Data tier -->
+            <div class="arch-node">MySQL Database</div>
+            <div class="arch-node">Player Statistics Data</div>
+            <div class="arch-node">Strategy & Lineup Repository</div>
+          </div>
+        </div>
+
+        <!-- Database Design -->
+        <div class="case-block reveal">
+          <h3 class="case-block-title">Database Design Overview</h3>
+          <p style="margin-bottom: var(--sp-sm)">
+            The schema was designed around six primary entities with deliberate
+            normalisation to avoid data duplication while keeping query
+            complexity manageable.
+          </p>
+          <ul>
+            <li>
+              <strong style="color: var(--text-primary)">users</strong> — stores
+              user account information, including username, email address,
+              encrypted password, profile image, account role, and registration
+              details. This entity serves as the foundation for authentication
+              and user management throughout the platform.
+            </li>
+            <li>
+              <strong style="color: var(--text-primary)">teams</strong> —
+              contains team-related information such as team name, logo,
+              description, region, average MMR, and team captain details. It
+              also manages team membership relationships and team identity
+              within the platform.
+            </li>
+            <li>
+              <strong style="color: var(--text-primary)">scrim_requests</strong>
+              — manages scrim matchmaking requests between teams, including
+              requested MMR range, preferred practice schedule, request status,
+              and participating team references. This entity supports the
+              process of finding suitable scrim opponents with comparable skill
+              levels.
+            </li>
+            <li>
+              <strong style="color: var(--text-primary)">schedules</strong> —
+              stores training session information, including practice dates,
+              times, descriptions, participating teams, and notification
+              settings. It helps teams coordinate training activities and
+              maintain organized practice schedules.
+            </li>
+            <li>
+              <strong style="color: var(--text-primary)">player_stats</strong> —
+              stores player performance data retrieved from the Riot Games API,
+              including Rank, MMR, K/D ratio, ACS, match history, and other
+              competitive statistics. These records are used to monitor player
+              development and evaluate training effectiveness.
+            </li>
+            <li>
+              <strong style="color: var(--text-primary)"
+                >strategies_and_lineups</strong
+              >
+              — maintains team strategies, tactical notes, and agent lineup
+              information for different maps. Team members can create, update,
+              and share strategic resources, allowing knowledge and gameplay
+              plans to be stored in a centralized repository.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Key Features -->
+        <div class="case-block reveal">
+          <h3 class="case-block-title">Key Features</h3>
+          <ul>
+            <li>
+              <b>Player Profiles</b> - Create and manage player profiles with
+              stats and achievements
+            </li>
+            <li>
+              <b>Team Management</b> - Create teams, manage members, and handle
+              invitations
+            </li>
+            <li>
+              <b>Career Matching</b> - LFP (Looking for Players) and LFT
+              (Looking for Team) system
+            </li>
+            <li>
+              <b>Leaderboard</b> - Track player rankings and VALORANT Premier
+              statistics
+            </li>
+            <li>
+              <b>Scrim Management</b> - Organize and manage scrimmage matches
+            </li>
+            <li>
+              <b>Strategy Planning</b> - Create and share game lineups and
+              strategies per map
+            </li>
+            <li>
+              <b>Team Analytics</b> - Analyze team and player performance
+              metrics
+            </li>
+            <li>
+              <b>Real-time Communication</b> - Team chat with WebSocket support
+            </li>
+            <li>
+              <b>Notifications</b> - Real-time notifications system (Socket.IO)
+            </li>
+            <li>
+              <b>Admin Dashboard</b> - User and team management, ban system
+            </li>
+            <li>
+              <b>Email Support</b> - PHPMailer integration for notifications and
+              password resets
+            </li>
+          </ul>
+        </div>
+
+        <!-- Challenges -->
+        <div class="case-block reveal">
+          <h3 class="case-block-title">Challenges Encountered</h3>
+          <ul>
+            <li class="challenge-item">
+              <div class="challenge-title">
+                Real-time communication architecture
+              </div>
+              <div class="challenge-text">
+                One of the main challenges was implementing a real-time chat
+                system. During development, it became clear that a traditional
+                PHP-based approach was not suitable for real-time communication
+                because updates would require frequent page refreshes or polling
+                mechanisms. To overcome this limitation, a dedicated Node.js
+                server with Socket.IO was introduced, enabling instant message
+                delivery and a significantly smoother user experience.
+              </div>
+            </li>
+            <li class="challenge-item">
+              <div class="challenge-title">
+                Interactive strategy planning interface
+              </div>
+              <div class="challenge-text">
+                Developing the strategy planning feature required working with
+                the HTML Canvas API for the first time. This involved creating
+                an interactive environment where users could place, move, and
+                organize tactical elements on a map, similar to planning tools
+                used in competitive Valorant gameplay. Learning how to manage
+                canvas rendering and user interactions was a valuable technical
+                challenge throughout the project.
+              </div>
+            </li>
+            <li class="challenge-item">
+              <div class="challenge-title">
+                Project planning and database evolution
+              </div>
+              As this was the first large-scale project developed independently,
+              estimating system requirements and future feature expansion proved
+              challenging. Several new requirements emerged during development,
+              leading to multiple revisions of the database schema. Although
+              these changes increased development time, they highlighted the
+              importance of database planning, scalability considerations, and
+              iterative system design in larger software projects.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Lessons Learned -->
+        <div class="case-block reveal">
+          <h3 class="case-block-title">Lessons Learned</h3>
+          <ul>
+            <li>
+              Planning the database schema thoroughly before writing a single
+              API route saved enormous refactoring time.
+            </li>
+            <li>
+              Real-time features add significant complexity — they should be
+              treated as a separate layer, not bolted on.
+            </li>
+            <li>
+              Role-based access control is easiest to implement as middleware
+              that reads from JWT claims rather than per-route checks.
+            </li>
+            <li>
+              Component architecture in React benefits from a clear data-flow
+              direction; mixing server state and local state leads to bugs fast.
+            </li>
+            <li>
+              Postman collections as living API documentation are invaluable —
+              both for personal reference and for sharing with future
+              collaborators.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ── SIDEBAR ── -->
+      <aside class="case-sidebar" aria-label="Project details">
+        <div class="sidebar-card reveal">
+          <h4>Tech Stack</h4>
+          <div class="sidebar-stack">
+            <div class="stack-row">
+              <span class="label">Frontend</span
+              ><span class="value">Bootstrap</span>
+            </div>
+            <div class="stack-row">
+              <span class="label">Styling</span
+              ><span class="value">CSS3</span>
+            </div>
+            <div class="stack-row">
+              <span class="label">Backend</span
+              ><span class="value">PHP</span>
+            </div>
+            <div class="stack-row">
+              <span class="label">Real-time</span
+              ><span class="value">Socket.io</span>
+            </div>
+            <div class="stack-row">
+              <span class="label">Database</span
+              ><span class="value">MySQL</span>
+            </div>
+            <div class="stack-row">
+              <span class="label">External APIs</span
+              ><span class="value">Riot Games API</span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="sidebar-card reveal delay-1">
+          <h4>Project Stats</h4>
+          <div class="sidebar-stack">
+            <div class="stack-row">
+              <span class="label">Duration</span
+              ><span class="value">~12 months</span>
+            </div>
+            <div class="stack-row">
+              <span class="label">API Endpoints</span
+              ><span class="value">50+</span>
+            </div>
+            <div class="stack-row">
+              <span class="label">DB Tables</span><span class="value">23</span>
+            </div>
+            <div class="stack-row">
+              <span class="label">Lines of Code</span
+              ><span class="value">~250,000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-card reveal delay-2">
+          <h4>Links</h4>
+          <div class="sidebar-stack" style="gap: 8px">
+            <a
+              href="https://github.com/zhepS-z/valorant-esports-training-platform"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="proj-link"
+              style="width: 100%; justify-content: center"
+            >
+              GitHub Repository →
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Screenshots -->
+    <div class="case-screenshots reveal">
+      <p class="section-label">Screenshots</p>
+      <h3 class="section-title" style="font-size: 1.4rem">
+        UI <span class="accent">Highlights</span>
+      </h3>
+      <div class="section-divider"></div>
+
+      <div class="screenshots-grid">
+        <div class="screenshot-card">
+          <img
+            src="assets/images/Career History.png"
+            alt="Valorant esports platform career history screen"
+            class="screenshot-placeholder"
+            data-gallery-index="0"
+          />
+          <div class="screenshot-cap">Career History</div>
+        </div>
+        <div class="screenshot-card">
+          <img
+            src="assets/images/Player Statics.png"
+            alt="Valorant esports platform player statistics dashboard"
+            class="screenshot-placeholder"
+            data-gallery-index="1"
+          />
+          <div class="screenshot-cap">Player Statistics Dashboard</div>
+        </div>
+        <div class="screenshot-card">
+          <img
+            src="assets/images/Strategy Planner.png"
+            alt="Valorant esports platform strategy planner screen"
+            class="screenshot-placeholder"
+            data-gallery-index="2"
+          />
+          <div class="screenshot-cap">Strategy Planner</div>
+        </div>
+        <div class="screenshot-card">
+          <img
+            src="assets/images/Leaderboard.png"
+            alt="Valorant esports platform leaderboard screen"
+            class="screenshot-placeholder"
+            data-gallery-index="3"
+          />
+          <div class="screenshot-cap">Leaderboard</div>
+        </div>
+      </div>
+
+      <div class="lightbox-overlay" aria-hidden="true" role="dialog" aria-label="Screenshot preview">
+        <button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous image">‹</button>
+        <div class="lightbox-content">
+          <img class="lightbox-image" src="" alt="" />
+          <p class="lightbox-caption"></p>
+        </div>
+        <button class="lightbox-nav lightbox-next" type="button" aria-label="Next image">›</button>
+      </div>
+    </div>
+  </div>
+</section>
