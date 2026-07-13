@@ -1,33 +1,50 @@
-# Portfolio Website
+# Settapong Janajina Portfolio
 
-## About Me
-Hello! I am a passionate web developer with a strong focus on creating clean, modern, and responsive portfolio websites. I enjoy building user-friendly interfaces with HTML, CSS, and JavaScript, and I am always exploring ways to improve the design and experience for visitors.
+Personal portfolio website rebuilt as a React single-page application with Vite.
 
-## Project Overview
-This project is a personal portfolio website that showcases my skills, projects, and background. It includes the following sections:
+## Overview
 
-- **Hero**: A strong introduction with a personal message and call to action.
-- **About**: A section describing who I am and what I do.
-- **Skills**: A summary of technical abilities and tools.
-- **Education**: Academic history and qualifications.
-- **Projects**: Featured work and case studies.
-- **Contact**: A way for visitors to reach out.
+This portfolio showcases skills, education, featured projects, a Valorant esports platform case study, screenshots, resume download, and contact links.
 
-## Structure
-The project is organized into the following folders and files:
+## Tech Stack
 
-- `index.html` — Main landing page.
-- `css/` — Styling files for the website layout and sections.
-- `js/` — JavaScript functionality for navbar, scrolling, and interactive behavior.
-- `sections/` — Modular HTML sections used by the main page.
-- `assets/` — Images, icons, and resume files used by the site.
+- React
+- Vite
+- CSS
+- Font Awesome
 
-## Usage
-To view the portfolio, open `index.html` in a web browser. For development, edit the HTML in `sections/`, update the styles in `css/`, and add or modify scripts in `js/`.
+## Project Structure
 
-## Goals
-This portfolio aims to present a professional online presence, highlight skills and experience, and provide a simple way for potential clients or employers to connect.
+- `index.html` - Vite entry HTML.
+- `src/main.jsx` - React components and interaction logic.
+- `src/react-polish.css` - extra motion, polish, and React-specific styling.
+- `css/` - original section styling and design system.
+- `assets/` - screenshots and resume PDF.
+- `context.md` - project context for future work.
+- `agent.md` - notes for future coding agents.
 
----
+## Development
 
-Thank you for visiting my portfolio project!
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run locally:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
