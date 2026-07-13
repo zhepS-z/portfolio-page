@@ -26,3 +26,11 @@ The site presents Settapong Janajina as a Computer Engineering student and full-
 ## Development
 
 Install dependencies with `npm install`, run locally with `npm run dev`, and build production files with `npm run build`.
+
+## Deployment
+
+The project is prepared for GitHub Pages on the `zhepS-z/portfolio-page` repository.
+
+- `vite.config.js` sets `base` to `/portfolio-page/`.
+- `.github/workflows/deploy.yml` builds the app and deploys `dist` using GitHub Actions.
+- Static assets used by React are imported with `new URL(..., import.meta.url)` so Vite includes them in production builds.

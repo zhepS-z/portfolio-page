@@ -11,6 +11,12 @@ import "../css/contact.css";
 import "../css/responsive.css";
 import "./react-polish.css";
 
+const resumePdf = new URL("../assets/resume/resume.pdf", import.meta.url).href;
+const careerHistoryImage = new URL("../assets/images/Career History.png", import.meta.url).href;
+const playerStatisticsImage = new URL("../assets/images/Player Statics.png", import.meta.url).href;
+const strategyPlannerImage = new URL("../assets/images/Strategy Planner.png", import.meta.url).href;
+const leaderboardImage = new URL("../assets/images/Leaderboard.png", import.meta.url).href;
+
 const navItems = [
   ["hero", "Home"],
   ["about", "About"],
@@ -78,10 +84,10 @@ const projects = [
 ];
 
 const screenshots = [
-  ["assets/images/Career History.png", "Career History"],
-  ["assets/images/Player Statics.png", "Player Statistics Dashboard"],
-  ["assets/images/Strategy Planner.png", "Strategy Planner"],
-  ["assets/images/Leaderboard.png", "Leaderboard"],
+  [careerHistoryImage, "Career History"],
+  [playerStatisticsImage, "Player Statistics Dashboard"],
+  [strategyPlannerImage, "Strategy Planner"],
+  [leaderboardImage, "Leaderboard"],
 ];
 
 function useScrollReveal() {
@@ -279,7 +285,7 @@ function Hero() {
             building practical applications that solve real-world problems and improve user experiences.
           </p>
           <div className="hero-actions reveal delay-4">
-            <a href="assets/resume/resume.pdf" className="btn btn-primary" download>
+            <a href={resumePdf} className="btn btn-primary" download>
               <i className="fa-solid fa-download" aria-hidden="true" />
               Resume
             </a>

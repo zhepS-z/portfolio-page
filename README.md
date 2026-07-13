@@ -48,3 +48,23 @@ Preview the production build:
 ```bash
 npm run preview
 ```
+
+## GitHub Pages
+
+This project is configured for the repository `zhepS-z/portfolio-page`.
+
+The Vite `base` path is set to `/portfolio-page/`, so production assets load correctly from:
+
+```text
+https://zheps-z.github.io/portfolio-page/
+```
+
+Deployment is handled by `.github/workflows/deploy.yml`.
+
+To publish:
+
+1. Push the project to the `main` branch.
+2. In GitHub, open the repository settings.
+3. Go to `Pages`.
+4. Set `Source` to `GitHub Actions`.
+5. Wait for the `Deploy to GitHub Pages` workflow to finish.

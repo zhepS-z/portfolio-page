@@ -14,6 +14,8 @@
 - `css/*.css`: original design system and section styles.
 - `assets/images/`: case study screenshots.
 - `assets/resume/resume.pdf`: downloadable resume.
+- `vite.config.js`: Vite config. The `base` value is currently `/portfolio-page/` for GitHub Pages.
+- `.github/workflows/deploy.yml`: GitHub Pages deployment workflow.
 
 ## Future Improvements
 
@@ -21,3 +23,4 @@
 - Move project, skill, and education data into separate data modules.
 - Add real contact form handling if a backend or form service is chosen.
 - Consider image optimization for faster loading.
+- If the repository name changes, update the Vite `base` path before deploying.
